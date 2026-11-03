@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good company. Better questions.</title>
+<meta name="description" content="Coco Frutti x Briidge: connection cards for the table, with a reflection and a free drink.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FBF2E3;--bg2:#F6ECDC;--ink:#241C12;--ink2:#6B5D4B;--line:#E8DCC6;--card:#FFFCF6;--primary:#5E5FA3;--primary2:#4A4B8A;--coco:#F6B94B;--coco2:#C98A1E;--ok:#3E7C5A;
+    --serif:"Fraunces","Iowan Old Style",Georgia,serif;--sans:"Lexend","Segoe UI",system-ui,sans-serif}
+  *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:radial-gradient(120% 60% at 50% 0%,#FFF7E6 0%,var(--bg) 60%);color:var(--ink);font-family:var(--sans);font-weight:300;min-height:100vh}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;max-width:520px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;color:var(--primary)}
+  .brand .coco{background:var(--coco);color:#fff;padding:4px 9px;border-radius:8px;letter-spacing:-.01em;font-size:14px}
+  main{max-width:520px;margin:0 auto;padding:8px 16px 56px}
+  .screen{display:none}.screen.on{display:block;animation:in .35s ease}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);font-weight:500;margin:0 0 10px}
+  h1{font-family:var(--serif);font-weight:300;font-size:40px;line-height:1.05;margin:0 0 12px;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:#8A7A66}
+  h2{font-family:var(--serif);font-weight:400;font-size:24px;margin:0 0 6px}
+  p{line-height:1.55;margin:0 0 14px;font-size:16px}.muted{color:var(--ink2);font-size:14px}
+  .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);font-weight:500;margin:22px 0 10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:10px 16px;font:inherit;font-size:15px;cursor:pointer}
+  .chip.on{background:#DCD9EC;border-color:#8B8CC4}
+  .chip small{display:block;font-size:12px;color:var(--ink2)}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{border:1.5px solid var(--ink);background:transparent;border-radius:14px;padding:12px 14px;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}
+  .opt.on{background:#DCD9EC;border-color:#8B8CC4}.opt b{font-family:var(--serif);font-weight:400;font-size:18px;display:block}.opt span{font-size:13px;color:var(--ink2)}
+  input,textarea{font:inherit;font-weight:300;width:100%;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#F3EBDB;margin:5px 0;font-size:17px;color:var(--ink)}
+  textarea{min-height:110px;font-family:var(--serif);font-size:18px;background:#fff;border-color:#8B8CC4}
+  .btn{font:inherit;font-weight:500;width:100%;padding:16px;border-radius:999px;border:0;background:var(--primary);color:#fff;font-size:17px;cursor:pointer;margin-top:12px}
+  .btn:disabled{opacity:.45;cursor:default}.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}.btn.coco{background:var(--coco2)}
+  .link{background:none;border:0;font:inherit;color:var(--ink2);text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px}
+  .box{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:18px}
+  .card{background:var(--card);border-radius:22px;padding:26px 22px;box-shadow:0 18px 50px rgba(36,28,18,.10),0 1px 0 #fff inset;margin:18px 0}
+  .card .q{font-family:var(--serif);font-size:30px;line-height:1.2;margin:10px 0 18px;font-weight:300}
+  .card .foot{display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+  .people{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:6px 0 14px}
+  .person{border-radius:14px;padding:10px 12px;border:1.5px solid var(--line);background:var(--bg2)}
+  .person.turn{border-color:var(--primary);background:#ECEBF5}.person .st{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+  .person .nm{font-family:var(--serif);font-size:22px}.person .ans{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink2);margin-top:4px}
+  .tools{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-bottom:6px}.tools .chip{padding:7px 12px;font-size:13px}
+  .modal{position:fixed;inset:0;background:rgba(251,242,227,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px;z-index:5}
+  .modal.on{display:flex}.modal .box{width:100%;max-width:480px;max-height:85vh;overflow:auto}
+  .live{font-family:var(--serif);font-size:18px;min-height:60px;padding:12px;border-radius:14px;background:#fff;border:1.5px dashed #8B8CC4}
+  .rec{display:inline-block;width:10px;height:10px;border-radius:50%;background:#C24A3A;animation:pulse 1s infinite;margin-right:8px}
+  @keyframes pulse{50%{opacity:.3}}
+  .ans-row{border-bottom:1px solid var(--line);padding:12px 0}.ans-row .qq{font-size:12px;color:var(--ink2)}.ans-row .aa{font-size:16px;margin:4px 0 8px}
+  .ans-row .link{padding:4px 8px;font-size:13px}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:8px 0}.check input{width:22px;height:22px;margin:0;padding:0}
+  .dots{display:flex;gap:6px;margin:4px 0 10px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.done{background:var(--primary)}
+  .quote{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4;margin:8px 0}
+  .refl{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
+  .reward{background:linear-gradient(160deg,#FFD981,var(--coco));border-radius:22px;padding:26px 22px;text-align:center;margin-top:18px}
+  .reward .big{font-family:var(--serif);font-size:32px;line-height:1.1;margin:6px 0}
+  .code{font-family:Consolas,Menlo,monospace;font-size:22px;letter-spacing:.14em;background:#fff;border-radius:12px;padding:10px 14px;display:inline-block;margin-top:10px}
+  table{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:14px}td{padding:9px 4px;border-bottom:1px solid var(--line);vertical-align:top}td:last-child{text-align:right;white-space:nowrap}
+  .steps{list-style:none;padding:0;margin:0 0 6px;counter-reset:s}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+  .steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--coco);color:var(--ink);font-weight:600;display:flex;align-items:center;justify-content:center}
+  .steps b{display:block;font-weight:500}.steps span{display:block;color:var(--ink2);font-size:13px}
+  .center{text-align:center}.sp{height:10px}
+  @media(min-width:700px){.card .q{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="brand"><span class="coco">COCO FRUTTI</span> × BRIIDGE CARDS</div><span class="muted" id="tableLbl"></span></div>
+<main>
+
+<!-- 1 HOME -->
+<section class="screen on" id="s-home">
+  <p class="kicker center">While you wait</p>
+  <h1 class="center">Good company.<br><em>Better questions.</em></h1>
+  <p class="center muted">Turn the wait for your food into the part you remember. A few questions for everyone at this table, a reflection at the end, and a free drink on Briidge.</p>
+  <div class="card"><div class="foot"><span>A little taste</span><span id="tasteN">01 / 03</span></div><p class="q" id="tasteQ"></p><div class="foot"><span></span><button class="link" onclick="taste()">Turn another →</button></div></div>
+  <p class="label">How it works</p>
+  <ol class="steps">
+    <li><div><b>Set the table</b><span>who's here, how deep, how many cards</span></div></li>
+    <li><div><b>Answer out loud, by voice or by typing</b><span>anyone can answer, pass the phone around, pass a card any time</span></div></li>
+    <li><div><b>Get your reflection, and your drink</b><span>Briidge reads back what came through, then show the screen to your server</span></div></li>
+  </ol>
+  <button class="btn" onclick="go('s-setup')">Start a conversation →</button>
+  <p class="center muted" style="margin-top:10px">One phone · Free to play · No account needed</p>
+  <p class="muted center" style="font-size:12px;margin-top:18px"><a href="#" onclick="go('s-partner');return false" style="color:var(--ink2)">For Coco Frutti: how the free drink works</a></p>
+</section>
+
+<!-- 2 SET THE TABLE -->
+<section class="screen" id="s-setup">
+  <p class="kicker">Set the table</p>
+  <h1>Who's here?</h1>
+  <p class="muted">A few good questions. Everyone gets a turn. Start light, see where it takes you.</p>
+  <p class="label">How do you know each other?</p>
+  <div class="chips" id="relChips"></div>
+  <p class="label">First names are all we need</p>
+  <div id="names"></div>
+  <button class="link" onclick="addName()">+ Add someone</button>
+  <div class="box" style="margin-top:16px">
+    <p class="kicker" style="margin:0 0 4px">Your round</p>
+    <h2 id="roundTitle">5 questions</h2><p class="muted" id="roundSub"></p>
+    <p class="label">How long have you known each other?</p><div class="chips" id="knownChips"></div>
+    <p class="label">How will you play?</p><div class="opts" id="modeOpts"></div>
+    <p class="label">How long should the round be?</p><div class="opts" id="lenOpts"></div>
+    <p class="label">How far should the questions go?</p><div class="chips" id="depthChips"></div>
+    <p class="label">Name this round (optional)</p><input id="roundName" placeholder="Breakfast at Coco Frutti">
+  </div>
+  <button class="btn" id="dealBtn" onclick="toConsent()">Deal the first of 5</button>
+  <p class="center muted" id="dealHint">Add at least two first names to begin.</p>
+</section>
+
+<!-- 3 RECORDING CHOICE -->
+<section class="screen" id="s-consent">
+  <p class="kicker">Recording & live transcript</p>
+  <h1>A little room for choice.</h1>
+  <p>Record your answers, see the live transcript, and edit the words before choosing your Briidge reflection. Everyone here needs to agree before the microphone is available.</p>
+  <p class="muted">Nothing records automatically. During play, tap Voice to start. You can stop, review and edit your transcript before anything is sent for a reflection. Your browser's speech service may process audio remotely.</p>
+  <div id="consentList"></div>
+  <button class="btn" id="micOnBtn" onclick="startPlay(true)">Continue with microphone available</button>
+  <button class="btn ghost" onclick="startPlay(false)">Continue with microphone off</button>
+  <p class="center muted">You can still type answers, or simply enjoy the conversation. No account or email needed.</p>
+  <p class="center"><button class="link" onclick="go('s-setup')">Back</button></p>
+</section>
+
+<!-- 4 PLAY -->
+<section class="screen" id="s-play">
+  <div class="tools"><button class="chip" onclick="readAloud()">🔈 Read aloud</button><button class="chip" onclick="openTranscript()">Transcript</button><button class="chip" onclick="toReview()">Reflection</button></div>
+  <p class="kicker" id="cardKicker">Warm-up · Card 1 of 5</p>
+  <div class="dots" id="dots"></div>
+  <div class="people" id="people"></div>
+  <div class="card"><div class="foot"><span id="cardCat"></span><span>✦</span></div><p class="q" id="q"></p><div class="foot"><span id="cardWho"></span></div></div>
+  <p class="muted center" id="hint"></p>
+  <div id="turnBtns">
+    <button class="btn" id="voiceBtn" onclick="startVoice()">Enable voice</button>
+    <div class="center"><button class="link" onclick="passTurn()" id="passBtn">Pass</button> <button class="link" onclick="openType()">Type instead</button></div>
+  </div>
+  <div id="doneBtns" style="display:none"><button class="btn" onclick="nextCard()" id="nextBtn">Deal the next card</button></div>
+</section>
+
+<!-- answer modal -->
+<div class="modal" id="m-answer"><div class="box">
+  <p class="kicker" id="ansWho">Noor's answer</p>
+  <div id="voiceBox" style="display:none"><p class="muted"><span class="rec"></span>Listening. Speak, then tap Stop.</p><div class="live" id="live"></div><button class="btn ghost" onclick="stopVoice()">Stop</button></div>
+  <div id="typeBox"><textarea id="ans" placeholder="Keep the words you want remembered…"></textarea></div>
+  <div style="display:flex;gap:10px;align-items:center;margin-top:8px"><button class="link" onclick="closeAnswer()">Cancel</button><button class="btn" style="margin:0" onclick="keepAnswer()">Keep answer</button></div>
+</div></div>
+
+<!-- transcript modal -->
+<div class="modal" id="m-transcript"><div class="box"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Your transcript</h2><button class="link" onclick="$('m-transcript').classList.remove('on')">Done</button></div><div id="transcriptList"></div></div></div>
+
+<!-- 5 REVIEW -->
+<section class="screen" id="s-review">
+  <p class="kicker">Your transcript & reflection</p>
+  <h1>Your words, ready to review.</h1>
+  <p class="muted">Review your transcript, edit anything that needs it, then create your Briidge reflection.</p>
+  <div class="box"><h2>Review & edit your transcript</h2><p class="muted" id="savedCount"></p><div id="reviewList"></div></div>
+  <div class="refl"><h2>Ready for your reflection?</h2><p class="muted">Briidge reflects on the words you saved to help you understand what came through in the conversation.</p>
+    <input id="thought" placeholder="+ Keep a thought (optional)">
+    <label class="check"><input type="checkbox" id="agree"> Everyone agrees to send these saved words to Briidge to create a reflection.</label>
+    <button class="btn" onclick="createReflection()">Create our reflection →</button>
+    <p class="center muted">Based only on the words you saved. No email needed to read it.</p>
+    <button class="btn ghost" onclick="toReward()">Skip the reflection, claim the drink</button>
+  </div>
+</section>
+
+<!-- 6 WAIT -->
+<section class="screen" id="s-wait">
+  <div class="sp"></div><div class="sp"></div>
+  <p class="kicker center">The conversation is still yours</p>
+  <h1 class="center" style="font-size:52px">Phones down.</h1>
+  <p class="center quote">Tell each other one thing you want to remember.<br>Your reflection will be here when you look back.</p>
+  <p class="center muted" id="waitStatus">Reading what was shared</p>
+  <p class="center muted" style="font-size:12px">Leave this screen open. Your answers are already safe.</p>
+</section>
+
+<!-- 7 REFLECTION -->
+<section class="screen" id="s-reflection">
+  <p class="kicker">A reflection from</p>
+  <h1 id="reflTitle">Breakfast at Coco Frutti</h1>
+  <p class="muted" id="reflMeta"></p>
+  <p class="muted">A small picture of this conversation. Keep what feels true; leave room for what comes next.</p>
+  <div class="refl"><p class="label">What surfaced between you</p><div id="surfaced"></div></div>
+  <div class="refl"><p class="label">A question for next time</p><p class="quote" id="nextQ"></p></div>
+  <div class="refl"><p class="label">Person by person</p><p class="muted">Personal reflections stay closed. Pass the phone to each person; they choose when to open theirs.</p><div id="personal"></div></div>
+  <div class="refl center"><p class="quote">There's always more to each other.</p><button class="btn coco" onclick="toReward()">Claim the table's free drink →</button><button class="btn ghost" onclick="restart()">Start another round</button></div>
+  <p class="muted center" style="font-size:12px">Demo: this reflection is built on this phone from the words you kept. The real Briidge reflection is written by Briidge.</p>
+</section>
+
+<!-- 8 REWARD -->
+<section class="screen" id="s-reward">
+  <div class="reward"><p class="kicker" style="color:var(--ink)">Thank you for playing</p><div class="big">One free drink for this table</div><p>Show this to your server. Any drink up to $5, on Briidge.</p><div class="code" id="code"></div></div>
+  <h2 style="margin-top:24px">Keep this going after breakfast</h2>
+  <p class="muted">Briidge is the app that helps families talk about what matters: the money stuff, the hard stuff, the good stuff. Add an email for a private copy of your reflection and a spot in the beta.</p>
+  <input placeholder="Email (optional)"><button class="btn" onclick="this.textContent='Sent (demo)';this.disabled=true">Email me my reflection + beta invite</button>
+  <button class="btn ghost" onclick="restart()">Play again</button>
+</section>
+
+<!-- PARTNER -->
+<section class="screen" id="s-partner">
+  <p class="kicker">For Coco Frutti</p>
+  <h1>How the free drink works</h1>
+  <p>Briidge pays for the drink. Coco Frutti sells it. The guest gets it free. Everyone at the table leaves with something to talk about.</p>
+  <table><tr><td><b>Guest</b> finishes the round, shows the code</td><td>free drink</td></tr><tr><td><b>Coco Frutti</b> rings the drink at menu price, Briidge reimburses up to $5</td><td>+ drink margin</td></tr><tr><td><b>Briidge</b> gets a table that met us in person</td><td>$5 per table</td></tr></table>
+  <h2>One restaurant, one day</h2>
+  <table><tr><td>Tables that play (placeholder, you set the pilot size)</td><td>20</td></tr><tr><td>Drinks Briidge pays for</td><td>20 × $5 = $100</td></tr><tr><td>Extra drinks Coco Frutti sells</td><td>20</td></tr><tr><td>Cost to Coco Frutti</td><td>$0</td></tr></table>
+  <p class="muted">The printed deck on the table is the same 35 questions, English and French. The QR brings guests here, with Coco Frutti's name on it. Quebec stores start with cards only.</p>
+  <button class="btn" onclick="go('s-home')">Back to the table</button>
+</section>
+</main>
+
+<script>
+// ---------- deck: 35 cards from restaurant-deck-v0.md, tagged by depth ----------
+const LIGHT=[
+"What's the best meal this family has ever had together, and what made it the best?",
+"If this family had a motto, what would it be?",
+"Who at this table would last longest in the wild, and why?",
+"What's something small that makes you irrationally happy?",
+"What's the last thing that made you genuinely excited? Not happy, excited.",
+"What's something you loved doing as a kid that you'd secretly still love to do?",
+"What would a perfect ordinary Tuesday look like for you?",
+"When are you at your funniest, and who brings that out of you?",
+"What did your childhood bedroom say about you?",
+"What's the very first scene you remember from your life?",
+"If your family was a team, what position did you play? The glue, the rebel, the comedian, the referee?",
+"What's your favourite inside joke, and can you even explain it?",
+"When's the last time you laughed until it hurt, and who was there?",
+"What's one thing you're good at that the rest of this table doesn't know?",
+"What's the first thing you'd cook for someone you wanted to impress?"];
+const REAL=[
+"What's a meal that means love in your family?",
+"What's a tradition in your family that an outsider would find strange?",
+"Whose laugh in your family can you hear right now if you close your eyes?",
+"What's the funniest thing a grandparent has ever said to you?",
+"What's the story behind how your parents met, in their words, not yours?",
+"What music did your dad play in the car, and what do you feel when you hear it now?",
+"What does your sibling remember completely differently than you do?",
+"What's your parent's favourite story to tell about you, and why do you think it's that one?",
+"What's the story your family tells every single time you're together?",
+"What's your favourite memory with a grandparent?",
+"What's a small ritual you share with someone? The coffee order, the same seat, the goodbye wave.",
+"Who in your family is the keeper, the one who holds everyone together, and does anyone hold them?"];
+const DEEP=[
+"When were you last completely in your element, and what were you doing?",
+"What did you want to be when you were younger, and what does that kid think of you now?",
+"What's the most beautiful thing you've ever experienced? Not a person, not an achievement.",
+"What tradition do you want to start that your family doesn't have yet?",
+"What are you looking forward to that involves another person?",
+"What's one thing about your week you haven't told anyone yet? Tell whoever's in front of you.",
+"If this breakfast could include anyone you've ever known, living or gone, who's at the table?",
+"If you had five more summers with someone you love, how would you spend them?"];
+console.assert(LIGHT.length+REAL.length+DEEP.length===35,"deck should be 35 cards");
+const CLOSER={q:"Before the plates come: decide together what you'll order to share next time you're here, and who's paying.",cat:"Do this together"};
+const FAMILY_WORDS=/family|parent|sibling|grandparent|dad|mother/i;
+
+const REL=[["Solo","Just you, reflecting on your own"],["Partners","Together, in whatever shape that takes"],["Close friends","The people who already know you"],["Family","A few of us around one table"],["Parent and child","Any age, either direction"],["Siblings","Same house, different childhoods"],["Colleagues","Work people, or almost-friends"],["Just met","Strangers, and curious about it"]];
+const KNOWN=["Tonight","Under a year","A few years","Most of my life"];
+const MODES=[["Use this screen","One question at a time"],["Use the printed deck","Choose the cards yourselves"]];
+const LENS=[["Quick check-in","Two questions · a few minutes",2],["A quick round","Three questions · easy to fit in",3],["Stay a little","Five questions · enough time to settle in",5],["Take your time","Ten questions · an unhurried conversation",10]];
+const DEPTHS=["Keep it light","Go real","Go deep"];
+const CATS={0:"Warm-up",1:"Around this table",2:"A little deeper"};
+
+const S={rel:"Family",known:"Most of my life",mode:0,len:5,depth:1,names:[],mic:false,deck:[],i:0,turn:0,answers:[],consent:{}};
+const $=id=>document.getElementById(id);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0)}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ---------- home ----------
+let tasteI=0;function taste(){tasteI=(tasteI+1)%3;$('tasteQ').textContent=LIGHT[tasteI];$('tasteN').textContent='0'+(tasteI+1)+' / 03'}
+$('tasteQ').textContent=LIGHT[0];
+
+// ---------- setup ----------
+function chips(id,items,get,set){$(id).innerHTML=items.map(it=>{const [l,sub]=Array.isArray(it)?it:[it];return `<button class="chip ${get()===l?'on':''}" title="${sub||''}">${l}</button>`}).join('');[...$(id).children].forEach((b,k)=>b.onclick=()=>{set(Array.isArray(items[k])?items[k][0]:items[k],k);renderSetup()})}
+function opts(id,items,get,set){$(id).innerHTML=items.map((it,k)=>`<button class="opt ${get()===k?'on':''}"><b>${it[0]}</b><span>${it[1]}</span></button>`).join('');[...$(id).children].forEach((b,k)=>b.onclick=()=>{set(k);renderSetup()})}
+function renderSetup(){
+  chips('relChips',REL,()=>S.rel,v=>S.rel=v);
+  chips('knownChips',KNOWN,()=>S.known,v=>S.known=v);
+  opts('modeOpts',MODES,()=>S.mode,k=>S.mode=k);
+  opts('lenOpts',LENS,()=>LENS.findIndex(l=>l[2]===S.len),k=>S.len=LENS[k][2]);
+  chips('depthChips',DEPTHS,()=>DEPTHS[S.depth],(v,k)=>S.depth=k);
+  const n=names().length,need=S.rel==="Solo"?1:2;
+  $('roundTitle').textContent=S.len+' questions';
+  $('roundSub').textContent=`About ${Math.round(S.len*2.5)}-${S.len*3+5} min for ${Math.max(n,need)} people · ${DEPTHS[S.depth]}`;
+  $('dealBtn').textContent='Deal the first of '+S.len;$('dealBtn').disabled=n<need;
+  $('dealHint').textContent=n<need?`Add at least ${need} first name${need>1?'s':''} to begin.`:'';
+}
+function addName(){if($('names').children.length>=9)return;const el=document.createElement('input');el.placeholder=$('names').children.length?'Their first name':'Your first name';el.oninput=renderSetup;$('names').appendChild(el)}
+function names(){return [...$('names').querySelectorAll('input')].map(x=>x.value.trim()).filter(Boolean)}
+addName();addName();renderSetup();
+
+// ---------- consent ----------
+function toConsent(){S.names=names();$('consentList').innerHTML=S.names.map((n,k)=>`<div class="box" style="margin:10px 0;border-left:3px solid var(--primary)"><h2>${esc(n)}</h2><label class="check"><input type="checkbox" data-p="${k}" data-f="rec"> I agree to be recorded</label><label class="check"><input type="checkbox" data-p="${k}" data-f="age"> I am 18 or older</label></div>`).join('');
+  $('consentList').querySelectorAll('input').forEach(c=>c.onchange=checkConsent);checkConsent();go('s-consent')}
+function checkConsent(){const all=[...$('consentList').querySelectorAll('input')].every(c=>c.checked);$('micOnBtn').disabled=!all||!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)}
+
+// ---------- play ----------
+function buildDeck(){
+  const base=S.depth===0?[...LIGHT]:S.depth===1?[...REAL,...LIGHT.slice(0,3)]:[...DEEP,...REAL.slice(0,2)];
+  const pool=(/Colleagues|Just met|Partners/.test(S.rel)?base.filter(q=>!FAMILY_WORDS.test(q)):base);
+  const extra=[...LIGHT,...REAL,...DEEP].filter(q=>!pool.includes(q));
+  const qs=[...pool,...extra].slice(0,Math.max(1,S.len-1));
+  S.deck=qs.map((q,k)=>({q,cat:CATS[S.depth]||'Warm-up',depthCat:k<3?CATS[0]:CATS[S.depth]})).concat([CLOSER]);
+}
+function startPlay(mic){S.mic=mic;buildDeck();S.i=0;S.answers=[];startCard();go('s-play')}
+function startCard(){S.turn=0;S.passed=new Set();renderCard()}
+function card(){return S.deck[S.i]}
+function renderCard(){
+  const c=card(),closer=!!c.cat&&c===CLOSER,everyone=closer||S.turn>=S.names.length;
+  $('cardKicker').textContent=`${closer?'Connect':(S.i<2?CATS[0]:CATS[S.depth])} · Card ${S.i+1} of ${S.deck.length}`;
+  $('dots').innerHTML=S.deck.map((_,k)=>`<i class="${k<S.i?'done':''}"></i>`).join('');
+  $('cardCat').textContent=closer?'Do this together':(S.i<2?'Warm-up':S.depth===2?'Go deep':'Understand each other');
+  $('q').textContent=c.q;
+  const who=S.names[S.turn];
+  $('cardWho').textContent=closer?'Everyone, together':everyone?'Everyone had a turn':`${who} ${S.turn===0?'opens':'answers'}`;
+  $('people').innerHTML=S.names.map((n,k)=>{const a=S.answers.find(x=>x.card===S.i&&x.p===k);const st=closer?'Together':a?'Heard':S.passed.has(k)?'Passed':k===S.turn?'Your turn':k<S.turn?'Heard':'Listening';
+    return `<div class="person ${k===S.turn&&!everyone?'turn':''}"><div class="st">${st}</div><div class="nm">${esc(n)}</div>${a?`<div class="ans">“${esc(a.text)}”</div>`:''}</div>`}).join('');
+  $('hint').textContent=everyone?'':S.mic?`${who}: tap Enable voice and answer out loud, or type instead.`:`${who}: read it out loud, answer, then type the words you want remembered. Or just pass.`;
+  $('turnBtns').style.display=everyone?'none':'';$('doneBtns').style.display=everyone?'':'none';
+  $('voiceBtn').style.display=S.mic?'':'none';$('passBtn').textContent=`Pass ${who||''}'s turn`;
+  $('nextBtn').textContent=S.i===S.deck.length-1?'Close the round':'Deal the next card';
+}
+function passTurn(){S.passed.add(S.turn);S.turn++;renderCard()}
+function nextCard(){if(S.i>=S.deck.length-1){toReview();return}S.i++;startCard()}
+function openType(){$('ansWho').textContent=S.names[S.turn]+"'s answer";$('voiceBox').style.display='none';$('typeBox').style.display='';$('ans').value='';$('m-answer').classList.add('on');$('ans').focus()}
+function closeAnswer(){stopVoice(true);$('m-answer').classList.remove('on')}
+function keepAnswer(){const t=($('ans').value||$('live').textContent).trim();stopVoice(true);if(!t){$('m-answer').classList.remove('on');return}
+  S.answers=S.answers.filter(a=>!(a.card===S.i&&a.p===S.turn));S.answers.push({card:S.i,p:S.turn,q:card().q,text:t});$('m-answer').classList.remove('on');S.turn++;renderCard()}
+// voice: Web Speech API live transcript, Chrome/Android/iOS Safari 14.5+
+let rec=null;
+function startVoice(){const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){alert('Voice is not available in this browser. Type instead.');return}
+  $('ansWho').textContent=S.names[S.turn]+"'s answer";$('voiceBox').style.display='';$('typeBox').style.display='none';$('live').textContent='';$('ans').value='';$('m-answer').classList.add('on');
+  rec=new R();rec.continuous=true;rec.interimResults=true;rec.lang='en-CA';let fin='';
+  rec.onresult=e=>{let interim='';for(let k=e.resultIndex;k<e.results.length;k++){const r=e.results[k];if(r.isFinal)fin+=r[0].transcript+' ';else interim+=r[0].transcript}$('live').textContent=(fin+interim).trim()};
+  rec.onerror=e=>{$('live').textContent='Mic error: '+e.error+'. Tap Stop and type instead.'};rec.start()}
+function stopVoice(silent){if(rec){try{rec.stop()}catch(e){}rec=null}if(!silent){$('ans').value=$('live').textContent;$('voiceBox').style.display='none';$('typeBox').style.display=''}}
+function readAloud(){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(card().q))}
+function transcriptHTML(){return S.answers.length?S.answers.map((a,k)=>`<div class="ans-row"><div class="qq">${esc(S.names[a.p])} · ${esc(a.q)}</div><div class="aa">${esc(a.text)}</div><button class="link" onclick="editAns(${k})">Edit answer</button><button class="link" onclick="delAns(${k})">Delete answer</button></div>`).join(''):'<p class="muted">Nothing saved yet. Only the words you keep go into the reflection.</p>'}
+function openTranscript(){$('transcriptList').innerHTML=transcriptHTML();$('m-transcript').classList.add('on')}
+function editAns(k){const t=prompt('Edit the words you want remembered:',S.answers[k].text);if(t!==null){S.answers[k].text=t.trim()}refreshLists()}
+function delAns(k){S.answers.splice(k,1);refreshLists()}
+function refreshLists(){$('transcriptList').innerHTML=transcriptHTML();$('reviewList').innerHTML=transcriptHTML();$('savedCount').textContent=`${S.answers.length} saved answers. Only these words go into your reflection.`;if($('s-play').classList.contains('on'))renderCard()}
+
+// ---------- review + reflection ----------
+function toReview(){$('m-transcript').classList.remove('on');refreshLists();go('s-review')}
+const roundName=()=>$('roundName').value.trim()||'Breakfast at Coco Frutti';
+function createReflection(){if(!$('agree').checked){alert('Everyone needs to agree first.');return}go('s-wait');const steps=[...S.names.map(n=>`Reading what ${n} shared`),'Finding what stayed'];let k=0;$('waitStatus').textContent=steps[0];
+  const t=setInterval(()=>{k++;if(k<steps.length)$('waitStatus').textContent=steps[k];else{clearInterval(t);renderReflection();go('s-reflection')}},1400)}
+function renderReflection(){
+  const byP=S.names.map((n,k)=>S.answers.filter(a=>a.p===k));
+  $('reflTitle').textContent=roundName();$('reflMeta').textContent=`${S.names.length} ${S.names.length===1?'person':'people'}, ${S.deck.length} cards`;
+  const longest=arr=>arr.slice().sort((a,b)=>b.text.length-a.text.length)[0];
+  $('surfaced').innerHTML=(S.answers.length?byP.map((arr,k)=>arr.length?`<p class="quote">${esc(S.names[k])} said, “${esc(longest(arr).text)}”</p>`:'').join(''):'<p class="muted">No words were kept this round. The conversation still happened.</p>')+($('thought').value.trim()?`<p class="muted">A thought you kept: “${esc($('thought').value.trim())}”</p>`:'');
+  $('nextQ').textContent=DEEP[(S.answers.length+S.names.length)%DEEP.length];
+  $('personal').innerHTML=S.names.map((n,k)=>`<div class="box" style="margin:10px 0"><p class="kicker">Private reflection</p><h2>For ${esc(n)}</h2><p class="muted">Hand ${esc(n)} the phone before opening this.</p><button class="btn ghost" onclick="this.nextElementSibling.style.display='';this.remove()">Show ${esc(n)}'s reflection</button><div style="display:none">${personal(n,byP[k])}</div></div>`).join('');
+}
+// shortcut: template reflection built in the browser; the real one comes from bridge-server. Upgrade when the demo moves to briidge.app.
+function personal(n,arr){if(!arr.length)return `<p class="muted">${esc(n)} listened this round. Listening counts.</p>`;
+  const L=arr.slice().sort((a,b)=>b.text.length-a.text.length)[0];const title=L.text.split(/[,.;]/)[0].split(' ').slice(0,6).join(' ');
+  const who=L.text.match(/\b(mother|father|mom|dad|brother|sister|kids?|wife|husband|friend|grandma|grandpa|family)\b/i);
+  return `<h2 style="margin-top:8px">${esc(title)}</h2><p class="label">What came through</p><p>Asked “${esc(L.q)}”, ${esc(n)} reached for something specific: ${esc(L.text.length>80?L.text.slice(0,80).trim()+'…':L.text)} ${who?`The person who shows up in that answer is ${who[0].toLowerCase()}. That is usually not an accident.`:'The detail chosen says as much as the answer.'}</p>
+  <p class="label">How to know me</p><p>${esc(n)} kept ${arr.length} answer${arr.length>1?'s':''} this round${arr.length>1?', and the shortest was still '+Math.min(...arr.map(a=>a.text.split(' ').length))+' words':''}. Ask a follow-up, not a new question.</p>
+  <p class="label">In your words</p>${arr.map(a=>`<p class="quote">“${esc(a.text)}”</p>`).join('')}
+  <p class="label">A question to keep</p><p class="quote">What makes that important to you?</p>`}
+function toReward(){$('code').textContent='CF-'+Math.random().toString(36).slice(2,6).toUpperCase();go('s-reward')}
+function restart(){S.answers=[];S.i=0;go('s-home')}
+// shortcut: ?table=12 only labels the header; the pilot ties the code to a table + day so a code is used once.
+const t=new URLSearchParams(location.search).get('table');if(t)$('tableLbl').textContent='Table '+t;
+
+// ---------- self-test: ?selftest=1 runs the whole flow headless and logs PASS/FAIL ----------
+if(new URLSearchParams(location.search).get('selftest')){try{
+  const ins=$('names').querySelectorAll('input');ins[0].value='Noor';ins[1].value='Habib';renderSetup();console.assert(!$('dealBtn').disabled,'deal enabled');
+  toConsent();startPlay(false);console.assert(S.deck.length===5&&S.deck[4]===CLOSER,'deck 5 with closer');
+  for(let c=0;c<4;c++){for(let p=0;p<2;p++){openType();$('ans').value=`answer ${c}${p} about my mother`;keepAnswer()}nextCard()}
+  console.assert(S.answers.length===8,'8 answers');console.assert(card()===CLOSER,'closer last');nextCard();console.assert($('s-review').classList.contains('on'),'review screen');
+  $('agree').checked=true;renderReflection();console.assert($('personal').children.length===2,'2 personal reflections');toReward();console.assert(/^CF-/.test($('code').textContent),'code');
+  document.title='SELFTEST PASS'}catch(e){document.title='SELFTEST FAIL '+e.message;console.error(e)}}
+</script>
+</body>
+</html>
