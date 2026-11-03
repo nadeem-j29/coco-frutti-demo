@@ -207,6 +207,7 @@
   <h2>One restaurant, one day</h2>
   <table><tr><td>Tables that play (placeholder, you set the pilot size)</td><td>20</td></tr><tr><td>Drinks Briidge pays for</td><td>20 × $5 = $100</td></tr><tr><td>Extra drinks Coco Frutti sells</td><td>20</td></tr><tr><td>Cost to Coco Frutti</td><td>$0</td></tr></table>
   <p class="muted">The printed deck on the table is the same 35 questions, English and French. The QR brings guests here, with Coco Frutti's name on it. Quebec stores start with cards only.</p>
+  <div class="box center" style="margin-top:14px"><p class="kicker">Try it on your phone</p><img id="qr" alt="QR code for this demo" width="180" height="180" style="border-radius:12px;background:#fff;padding:8px"><p class="muted" style="font-size:12px;margin:8px 0 0">Scan with your camera. This is what a guest sees at the table.</p></div>
   <button class="btn" onclick="go('s-home')">Back to the table</button>
 </section>
 </main>
@@ -367,6 +368,8 @@ function toReward(){$('code').textContent='CF-'+Math.random().toString(36).slice
 function restart(){S.answers=[];S.i=0;go('s-home')}
 // shortcut: ?table=12 only labels the header; the pilot ties the code to a table + day so a code is used once.
 const t=new URLSearchParams(location.search).get('table');if(t)$('tableLbl').textContent='Table '+t;
+// QR of this page's own URL (external generator, demo only; the pilot prints its own)
+$('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+encodeURIComponent(location.origin+location.pathname);
 
 // ---------- self-test: ?selftest=1 runs the whole flow headless and logs PASS/FAIL ----------
 if(new URLSearchParams(location.search).get('selftest')){try{
