@@ -13,202 +13,199 @@
   *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
   body{margin:0;background:radial-gradient(120% 60% at 50% 0%,#FFF7E6 0%,var(--bg) 60%);color:var(--ink);font-family:var(--sans);font-weight:300;min-height:100vh}
   .top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;max-width:520px;margin:0 auto}
-  .brand{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;color:var(--primary)}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;color:var(--primary);background:none;border:0;padding:0;cursor:pointer}
   .brand .coco{background:var(--coco);color:#fff;padding:4px 9px;border-radius:8px;letter-spacing:-.01em;font-size:14px}
   main{max-width:520px;margin:0 auto;padding:8px 16px 56px}
   .screen{display:none}.screen.on{display:block;animation:in .35s ease}
   @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen.on{animation:none}}
   .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);font-weight:500;margin:0 0 10px}
   h1{font-family:var(--serif);font-weight:300;font-size:40px;line-height:1.05;margin:0 0 12px;letter-spacing:-.01em}
   h1 em{font-style:normal;color:#8A7A66}
   h2{font-family:var(--serif);font-weight:400;font-size:24px;margin:0 0 6px}
   p{line-height:1.55;margin:0 0 14px;font-size:16px}.muted{color:var(--ink2);font-size:14px}
-  .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);font-weight:500;margin:22px 0 10px}
+  .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);font-weight:500;margin:22px 0 10px;display:block}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:10px 16px;font:inherit;font-size:15px;cursor:pointer}
   .chip.on{background:#DCD9EC;border-color:#8B8CC4}
-  .chip small{display:block;font-size:12px;color:var(--ink2)}
-  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .opt{border:1.5px solid var(--ink);background:transparent;border-radius:14px;padding:12px 14px;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}
-  .opt.on{background:#DCD9EC;border-color:#8B8CC4}.opt b{font-family:var(--serif);font-weight:400;font-size:18px;display:block}.opt span{font-size:13px;color:var(--ink2)}
-  input,textarea{font:inherit;font-weight:300;width:100%;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#F3EBDB;margin:5px 0;font-size:17px;color:var(--ink)}
+  #countChips .chip{flex:1;padding:12px 6px;border-radius:14px}
+  .opts{display:grid;gap:8px}
+  .opt{border:1.5px solid var(--ink);background:transparent;border-radius:14px;padding:14px;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}
+  .opt.on{background:#DCD9EC;border-color:#8B8CC4}.opt b{font-family:var(--serif);font-weight:400;font-size:19px;display:block}.opt span{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+  input,textarea,select{font:inherit;font-weight:300;width:100%;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#F3EBDB;margin:5px 0;font-size:17px;color:var(--ink)}
   textarea{min-height:110px;font-family:var(--serif);font-size:18px;background:#fff;border-color:#8B8CC4}
+  select{width:auto;padding:8px 12px}
+  .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:14px;color:var(--ink2)}
   .btn{font:inherit;font-weight:500;width:100%;padding:16px;border-radius:999px;border:0;background:var(--primary);color:#fff;font-size:17px;cursor:pointer;margin-top:12px}
-  .btn:disabled{opacity:.45;cursor:default}.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}.btn.coco{background:var(--coco2)}
-  .link{background:none;border:0;font:inherit;color:var(--ink2);text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px}
-  .box{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:18px}
-  .card{background:var(--card);border-radius:22px;padding:26px 22px;box-shadow:0 18px 50px rgba(36,28,18,.10),0 1px 0 #fff inset;margin:18px 0}
-  .card .q{font-family:var(--serif);font-size:30px;line-height:1.2;margin:10px 0 18px;font-weight:300}
-  .card .foot{display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-  .people{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:6px 0 14px}
-  .person{border-radius:14px;padding:10px 12px;border:1.5px solid var(--line);background:var(--bg2)}
-  .person.turn{border-color:var(--primary);background:#ECEBF5}.person .st{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-  .person .nm{font-family:var(--serif);font-size:22px}.person .ans{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink2);margin-top:4px}
-  .tools{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-bottom:6px}.tools .chip{padding:7px 12px;font-size:13px}
-  .modal{position:fixed;inset:0;background:rgba(251,242,227,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px;z-index:5}
-  .modal.on{display:flex}.modal .box{width:100%;max-width:480px;max-height:85vh;overflow:auto}
-  .live{font-family:var(--serif);font-size:18px;min-height:60px;padding:12px;border-radius:14px;background:#fff;border:1.5px dashed #8B8CC4}
-  .rec{display:inline-block;width:10px;height:10px;border-radius:50%;background:#C24A3A;animation:pulse 1s infinite;margin-right:8px}
-  @keyframes pulse{50%{opacity:.3}}
-  .ans-row{border-bottom:1px solid var(--line);padding:12px 0}.ans-row .qq{font-size:12px;color:var(--ink2)}.ans-row .aa{font-size:16px;margin:4px 0 8px}
-  .ans-row .link{padding:4px 8px;font-size:13px}
-  .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:8px 0}.check input{width:22px;height:22px;margin:0;padding:0}
-  .dots{display:flex;gap:6px;margin:4px 0 10px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.done{background:var(--primary)}
-  .quote{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4;margin:8px 0}
-  .refl{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
-  .reward{background:linear-gradient(160deg,#FFD981,var(--coco));border-radius:22px;padding:26px 22px;text-align:center;margin-top:18px}
-  .reward .big{font-family:var(--serif);font-size:32px;line-height:1.1;margin:6px 0}
-  .code{font-family:Consolas,Menlo,monospace;font-size:22px;letter-spacing:.14em;background:#fff;border-radius:12px;padding:10px 14px;display:inline-block;margin-top:10px}
-  table{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:14px}td{padding:9px 4px;border-bottom:1px solid var(--line);vertical-align:top}td:last-child{text-align:right;white-space:nowrap}
-  .steps{list-style:none;padding:0;margin:0 0 6px;counter-reset:s}
-  .steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
-  .steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--coco);color:var(--ink);font-weight:600;display:flex;align-items:center;justify-content:center}
-  .steps b{display:block;font-weight:500}.steps span{display:block;color:var(--ink2);font-size:13px}
-  .center{text-align:center}.sp{height:10px}
+  .btn:disabled{opacity:.45;cursor:default}.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .link{background:none;border:0;font:inherit;color:var(--ink2);text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:12px}
+  .box{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:18px;margin-top:16px}
+  .card{background:var(--card);border-radius:22px;padding:26px 22px;box-shadow:0 18px 50px rgba(36,28,18,.10),0 1px 0 #fff inset;margin:14px 0 18px}
+  .card .q{font-family:var(--serif);font-size:30px;line-height:1.2;margin:14px 0 6px;font-weight:300}
+  .card .cat{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin:0}
+  .prog{display:flex;gap:12px;justify-content:center;align-items:center;min-height:22px}
+  .dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.done{background:var(--primary)}
+  .saved{color:var(--primary);font-size:13px;font-weight:500;margin:0}
+  dl{margin:14px 0}dt{font-weight:500;font-size:14px}dd{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink2)}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:8px 0}.check input{width:22px;height:22px;margin:0;padding:0;flex:none}
+  .agree{border:1.5px solid var(--line);border-radius:14px;padding:12px;background:var(--card);font-size:15px;align-items:center}
+  .quote{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4;margin:6px 0 12px}
+  .center{text-align:center}.small{font-size:12px}
   @media(min-width:700px){.card .q{font-size:34px}}
 </style>
 </head>
 <body>
-<div class="top"><div class="brand"><span class="coco">COCO FRUTTI</span> × BRIIDGE CARDS</div><span class="muted" id="tableLbl"></span></div>
+<div class="top"><button class="brand" aria-label="Start over" onclick="restart()"><span class="coco">COCO FRUTTI</span> × BRIIDGE CARDS</button><span class="muted" id="tableLbl"></span></div>
 <main>
 
-<!-- 1 HOME -->
+<!-- 1 WELCOME: pick how to play -->
 <section class="screen on" id="s-home">
   <p class="kicker center">While you wait</p>
   <h1 class="center">Good company.<br><em>Better questions.</em></h1>
   <p class="center muted">Turn the wait for your food into the part you remember. A few good questions for everyone at this table.</p>
-  <div class="card"><div class="foot"><span>A little taste</span><span id="tasteN">01 / 03</span></div><p class="q" id="tasteQ"></p><div class="foot"><span></span><button class="link" onclick="taste()">Turn another →</button></div></div>
-  <p class="label">How it works</p>
-  <ol class="steps">
-    <li><div><b>Set the table</b><span>how deep, how many cards</span></div></li>
-    <li><div><b>Put the phone in the middle and talk</b><span>anyone can answer, nothing to type, pass a card any time</span></div></li>
-    <li><div><b>Want more? Get a reflection</b><span>type a few words as you go and Briidge reads back what came through</span></div></li>
-  </ol>
-  <button class="btn" onclick="go('s-setup')">Start a conversation →</button>
-  <p class="center muted" style="margin-top:10px">One phone · Free to play · No account needed</p>
+  <p class="label">How would you like to play?</p>
+  <div class="opts">
+    <button class="opt" onclick="pick('talk')"><b>Just Talk</b><span>Answer out loud, enjoy the conversation, move on. Nothing to type, no answers collected. No AI reflection in this mode.</span></button>
+    <button class="opt" onclick="pick('insights')"><b>Get Insights</b><span>Type your answers (or use your phone's voice-to-text) and Briidge writes a personalized AI reflection on what you share.</span></button>
+  </div>
+  <p class="center muted" style="margin-top:14px">One phone · Free to play · No account or email needed for either mode.</p>
 </section>
 
-<!-- 2 SET THE TABLE -->
-<section class="screen" id="s-setup">
-  <p class="kicker">Set the table</p>
-  <h1>Who's here?</h1>
-  <p class="muted">A few good questions. Anyone can answer. Start light, see where it takes you.</p>
-  <p class="label">How will you play?</p><div class="opts" id="modeOpts"></div>
-  <p class="label">How do you know each other?</p>
-  <div class="chips" id="relChips"></div>
+<!-- 2 PLAYERS -->
+<section class="screen" id="s-players">
+  <p class="kicker" id="plLabel"></p>
+  <h1>How many people are playing?</h1>
+  <div class="chips" id="countChips" role="radiogroup" aria-label="Number of players"></div>
+  <label class="row" id="exactWrap">How many exactly? <select id="exact" onchange="setCount(+this.value)"><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
   <div id="namesWrap">
-  <p class="label">First names for your reflection</p>
-  <div id="names"></div>
-  <button class="link" onclick="addName()">+ Add someone</button>
+    <p style="margin:22px 0 2px;font-weight:500">Add a first name or nickname for each player</p>
+    <p class="muted">So everyone's answers are attributed to the right person. Up to 8 players.</p>
+    <div id="names"></div>
+    <p class="muted" id="nameErr" role="alert"></p>
   </div>
-  <div class="box" style="margin-top:16px">
-    <p class="kicker" style="margin:0 0 4px">Your round</p>
-    <h2 id="roundTitle">5 questions</h2><p class="muted" id="roundSub"></p>
-    <p class="label">How long have you known each other?</p><div class="chips" id="knownChips"></div>
-    <p class="label">How long should the round be?</p><div class="opts" id="lenOpts"></div>
-    <p class="label">How far should the questions go?</p><div class="chips" id="depthChips"></div>
-    <p class="label">Name this round (optional)</p><input id="roundName" placeholder="Breakfast at Coco Frutti">
-  </div>
-  <button class="btn" id="dealBtn" onclick="toConsent()">Deal the first of 5</button>
-  <p class="center muted" id="dealHint">Add at least two first names to begin.</p>
+  <button class="btn" id="plBtn" onclick="contPlayers()">Continue</button>
+  <p class="center"><button class="link" onclick="go('s-home')">Back</button></p>
+  <p class="center muted small">Just Talk skips the names. Solo players skip the names too.</p>
 </section>
 
-<!-- 3 RECORDING CHOICE -->
+<!-- 3 CONSENT (Get Insights only) -->
 <section class="screen" id="s-consent">
-  <p class="kicker">Recording & live transcript</p>
-  <h1>A little room for choice.</h1>
-  <p>Record your answers, see the live transcript, and edit the words before choosing your Briidge reflection. Everyone here needs to agree before the microphone is available.</p>
-  <p class="muted">Nothing records automatically. During play, tap Voice to start. You can stop, review and edit your transcript before anything is sent for a reflection. Your browser's speech service may process audio remotely.</p>
+  <p class="kicker">Before you play</p>
+  <h1>What happens to your answers</h1>
+  <dl>
+    <dt>What's used</dt><dd>Only the answers you type and save. Anything said out loud isn't captured.</dd>
+    <dt>Why</dt><dd>To write your reflection.</dd>
+    <dt>Stored for</dt><dd>Your typed answers are erased after 90 days. Your reflection is kept, and it quotes a few of your lines with the names you entered.</dd>
+    <dt>Used to train AI</dt><dd>No. Your answers are not used to train AI.</dd>
+    <dt>Who can see it</dt><dd>The people at this phone. The AI services that write the reflection (Anthropic, with OpenAI as backup). A small Briidge team that runs the service. Never Coco Frutti.</dd>
+  </dl>
+  <p style="font-weight:500">Each player taps to agree</p>
   <div id="consentList"></div>
-  <button class="btn" id="micOnBtn" onclick="startPlay(true)">Continue with microphone available</button>
-  <button class="btn ghost" onclick="startPlay(false)">Continue with microphone off</button>
-  <p class="center muted">You can still type answers, or simply enjoy the conversation. No account or email needed.</p>
-  <p class="center"><button class="link" onclick="go('s-setup')">Back</button></p>
+  <p class="muted">Anyone who doesn't agree can still play. Their answers just won't be submitted.</p>
+  <button class="btn" id="consentBtn" onclick="contConsent()">Continue</button>
+  <p class="center"><button class="link" onclick="justTalk()">Switch to Just Talk instead</button></p>
+  <p class="center muted small">Demo: nothing you type here leaves this phone.</p>
 </section>
 
-<!-- 4 PLAY -->
+<!-- 4 DEPTH -->
+<section class="screen" id="s-depth">
+  <p class="kicker">Step 2 of 2</p>
+  <h1>How deep do you want to go?</h1>
+  <div class="opts" id="depthOpts" role="radiogroup" aria-label="Depth"></div>
+  <button class="btn" id="depthBtn" onclick="start(pickedDepth)">Start Playing</button>
+  <p class="center muted" id="depthHint" style="margin-top:8px">Pick how deep to go to begin.</p>
+  <p class="center"><button class="link" onclick="go('s-players')">Back</button></p>
+</section>
+
+<!-- 5 PLAY -->
 <section class="screen" id="s-play">
-  <div class="tools"><button class="chip" onclick="readAloud()">🔈 Read aloud</button><button class="chip" onclick="openTranscript()">Transcript</button><button class="chip" onclick="toReview()">Reflection</button></div>
-  <p class="kicker" id="cardKicker">Warm-up · Card 1 of 5</p>
-  <div class="dots" id="dots"></div>
-  <div class="people" id="people"></div>
-  <div class="card"><div class="foot"><span id="cardCat"></span><span>✦</span></div><p class="q" id="q"></p><div class="foot"><span id="cardWho"></span></div></div>
-  <p class="muted center" id="hint"></p>
-  <div id="turnBtns">
-    <button class="btn" id="voiceBtn" onclick="startVoice()">Enable voice</button>
-    <div class="center"><button class="link" onclick="passTurn()" id="passBtn">Pass</button> <button class="link" onclick="openType()">Type instead</button></div>
+  <div class="prog"><span class="muted" id="qNum"></span><span class="dots" id="dots" aria-hidden="true"></span><span class="saved" role="status"></span></div>
+  <div class="card"><p class="cat" id="cardCat"></p><p class="q" id="q"></p></div>
+  <div id="talkBtns"><button class="btn" onclick="next()">Next</button></div>
+  <div id="insightBtns">
+    <div id="whoWrap"><p class="muted" style="margin-bottom:8px">Who's answering?</p><div class="chips" id="who"></div></div>
+    <label class="label" for="ans" id="ansLbl">Your answer</label>
+    <textarea id="ans" maxlength="2000" rows="4" placeholder="Type, or tap the mic on your keyboard to dictate" oninput="$('saveBtn').disabled=!this.value.trim()"></textarea>
+    <p class="muted small">Give detailed answers for even deeper insights.</p>
+    <button class="btn" id="saveBtn" onclick="saveAndNext()">Save &amp; Next</button>
+    <button class="btn ghost" id="skipBtn" onclick="skip()"></button>
   </div>
-  <div id="doneBtns" style="display:none"><button class="btn" onclick="nextCard()" id="nextBtn">Deal the next card</button></div>
+  <p class="center"><button class="link" onclick="endRound()">End round</button></p>
 </section>
 
-<!-- answer modal -->
-<div class="modal" id="m-answer"><div class="box">
-  <p class="kicker" id="ansWho">Noor's answer</p>
-  <div id="voiceBox" style="display:none"><p class="muted"><span class="rec"></span>Listening. Speak, then tap Stop.</p><div class="live" id="live"></div><button class="btn ghost" onclick="stopVoice()">Stop</button></div>
-  <div id="typeBox"><textarea id="ans" placeholder="Keep the words you want remembered…"></textarea></div>
-  <div style="display:flex;gap:10px;align-items:center;margin-top:8px"><button class="link" onclick="closeAnswer()">Cancel</button><button class="btn" style="margin:0" onclick="keepAnswer()">Keep answer</button></div>
-</div></div>
-
-<!-- transcript modal -->
-<div class="modal" id="m-transcript"><div class="box"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Your transcript</h2><button class="link" onclick="$('m-transcript').classList.remove('on')">Done</button></div><div id="transcriptList"></div></div></div>
-
-<!-- 5 REVIEW -->
-<section class="screen" id="s-review">
-  <p class="kicker">Your transcript & reflection</p>
-  <h1>Your words, ready to review.</h1>
-  <p class="muted">Review your transcript, edit anything that needs it, then create your Briidge reflection.</p>
-  <div class="box"><h2>Review & edit your transcript</h2><p class="muted" id="savedCount"></p><div id="reviewList"></div></div>
-  <div class="refl"><h2>Ready for your reflection?</h2><p class="muted">Briidge reflects on the words you saved to help you understand what came through in the conversation.</p>
-    <input id="thought" placeholder="+ Keep a thought (optional)">
-    <label class="check"><input type="checkbox" id="agree"> Everyone agrees to send these saved words to Briidge to create a reflection.</label>
-    <button class="btn" onclick="createReflection()">Create our reflection →</button>
-    <p class="center muted">Based only on the words you saved. No email needed to read it.</p>
-    <button class="btn ghost" onclick="toEnd()">Skip the reflection</button>
-  </div>
+<!-- 6 CHECK-IN, every 3 questions -->
+<section class="screen" id="s-checkin">
+  <p class="kicker" id="ciLabel"></p>
+  <h1>Want to keep the conversation going?</h1>
+  <p class="saved" role="status"></p>
+  <div id="ciBtns"></div>
+  <div id="wlHostCheckin" style="margin-top:28px"></div>
 </section>
 
-<!-- 6 WAIT -->
+<!-- round ended early with answers saved -->
+<section class="screen" id="s-endprompt">
+  <p class="kicker">Round ended</p>
+  <h1>Want a reflection on what you shared?</h1>
+  <button class="btn" id="epBtn" onclick="reflectOrStart()"></button>
+  <button class="btn ghost" onclick="toEnd()">No Thanks</button>
+</section>
+
+<!-- too few answers for a reflection -->
+<section class="screen" id="s-starting">
+  <p class="kicker">A starting point</p>
+  <h1>That's a good start.</h1>
+  <p>A reflection needs a few more answers before it can say anything real about you. Answer a few more cards and ask again, or keep talking without one.</p>
+  <button class="btn" onclick="showCard()">Keep Playing</button>
+  <button class="btn ghost" onclick="toEnd()">Finish Playing</button>
+</section>
+
+<!-- 7 WAIT -->
 <section class="screen" id="s-wait">
-  <div class="sp"></div><div class="sp"></div>
-  <p class="kicker center">The conversation is still yours</p>
-  <h1 class="center" style="font-size:52px">Phones down.</h1>
-  <p class="center quote">Tell each other one thing you want to remember.<br>Your reflection will be here when you look back.</p>
-  <p class="center muted" id="waitStatus">Reading what was shared</p>
-  <p class="center muted" style="font-size:12px">Leave this screen open. Your answers are already safe.</p>
+  <p class="kicker center" style="margin-top:40px">One moment</p>
+  <h1 class="center" id="waitStatus" role="status" style="font-size:30px"></h1>
+  <p class="center muted">Your reflection will appear here when it's ready. Keep this page open.</p>
 </section>
 
-<!-- 7 REFLECTION -->
+<!-- 8 REFLECTION -->
 <section class="screen" id="s-reflection">
-  <p class="kicker">A reflection from</p>
-  <h1 id="reflTitle">Breakfast at Coco Frutti</h1>
-  <p class="muted" id="reflMeta"></p>
-  <p class="muted">A small picture of this conversation. Keep what feels true; leave room for what comes next.</p>
-  <div class="refl"><p class="label">What surfaced between you</p><div id="surfaced"></div></div>
-  <div class="refl"><p class="label">A question for next time</p><p class="quote" id="nextQ"></p></div>
-  <div class="refl"><p class="label">Person by person</p><p class="muted">Personal reflections stay closed. Pass the phone to each person; they choose when to open theirs.</p><div id="personal"></div></div>
-  <div class="refl center"><p class="quote">There's always more to each other.</p><button class="btn" onclick="toEnd()">Done →</button><button class="btn ghost" onclick="restart()">Start another round</button></div>
-  <p class="muted center" style="font-size:12px">Demo: this reflection is built on this phone from the words you kept. The real Briidge reflection is written by Briidge.</p>
+  <p class="kicker" id="reflMeta"></p>
+  <h1>Here's what your conversation revealed</h1>
+  <div id="reflBody"></div>
+  <p class="center muted small" style="margin-top:14px">Built only from the answers you saved. Demo: this reflection is put together on this phone. The real one is written by Briidge.</p>
+  <button class="btn" onclick="keepExploring()">Keep Exploring</button>
+  <p class="center muted small" style="margin-top:8px">Answer a few more questions. Your next reflection uses everything you've saved, old and new.</p>
+  <button class="btn ghost" id="reflJoin" onclick="jumpToWl()">Join the waitlist</button>
+  <div id="wlHostRefl"></div>
 </section>
 
-<!-- 8 END -->
+<!-- 9 END: waitlist -->
 <section class="screen" id="s-end">
   <p class="kicker center">Thank you for playing</p>
   <h1 class="center">Enjoy your meal.</h1>
   <p class="center quote">Pick one answer from today and ask about it again next time you're together.</p>
-  <div class="box" style="margin-top:18px">
-    <h2>Keep this going after breakfast</h2>
-    <p class="muted">Briidge is an app that helps families and friends understand each other better. Join the waitlist and we'll let you know when it launches.</p>
-    <input id="wlEmail" type="email" placeholder="Email (optional)">
-    <label class="check"><input type="checkbox" id="wlOk"> Yes, email me when Briidge launches. Nothing else, and I can unsubscribe any time.</label>
-    <button class="btn" id="wlBtn" onclick="joinWaitlist()">Join the waitlist</button>
-    <p class="muted center" id="wlHint" style="margin-top:8px"></p>
+  <div id="wlHostEnd">
+    <div class="box" id="wl">
+      <h2>Keep this going after breakfast</h2>
+      <p class="muted">Briidge is an app that helps families and friends understand each other better. Join the waitlist and we'll let you know when it launches.</p>
+      <label class="muted" for="wlEmail">Email address</label>
+      <input id="wlEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+      <label class="check"><input type="checkbox" id="wlOk"> Yes, email me when Briidge launches. Nothing else, and I can unsubscribe any time.</label>
+      <button class="btn" id="wlBtn" onclick="joinWaitlist()">Join the waitlist</button>
+      <p class="muted center" id="wlHint" role="status" style="margin:8px 0 0"></p>
+    </div>
   </div>
-  <button class="btn ghost" id="tryRefl" onclick="tryReflection()">Try a round with a reflection</button>
-  <button class="btn ghost" onclick="restart()">Play again</button>
+  <button class="btn ghost" onclick="playAgain()">Play Another Round</button>
+  <div class="box" id="tryBox">
+    <p>Curious what Briidge might notice? Try a round with Insights. Save a few words from each person to receive a personalized AI reflection.</p>
+    <p class="muted small">It starts a new round. Nothing said out loud so far was captured.</p>
+    <button class="btn" style="margin-top:0" onclick="tryInsights()">Try a Round with Insights</button>
+  </div>
 </section>
 </main>
 
 <script>
+// Flow follows Connection Cards v2 (briidge.app/cards/v2): pick a mode, players, consent, depth,
+// then cards with a check-in every 3 questions. No voice recording, typed answers only.
 // ---------- deck: Adam's 30 (the 35 minus 6, 15, 16, 25, 28, with his six rewords), tagged by depth ----------
 const LIGHT=[
 "What's the best meal you've had with anyone at this table, and what made it the best?",
@@ -243,151 +240,193 @@ const DEEP=[
 "What are you looking forward to that involves another person?",
 "If this breakfast could include anyone you've ever known, living or gone, who's at the table?",
 "If you had five more summers with someone you love, how would you spend them?"];
-console.assert(LIGHT.length+REAL.length+DEEP.length===30,"deck should be 30 cards");
-const CLOSER={q:"Before the plates come: decide together what you'll order to share next time you're here, and who's paying.",cat:"Do this together"};
-const FAMILY_WORDS=/family|parent|sibling|grandparent|dad|mother/i;
 
-const REL=[["Solo","Just you, reflecting on your own"],["Partners","Together, in whatever shape that takes"],["Close friends","The people who already know you"],["Family","A few of us around one table"],["Parent and child","Any age, either direction"],["Siblings","Same house, different childhoods"],["Colleagues","Work people, or almost-friends"],["Just met","Strangers, and curious about it"]];
-const KNOWN=["Tonight","Under a year","A few years","Most of my life"];
-const MODES=[["Just talk","Phone in the middle, nothing to type"],["Talk + reflection","Keep a few words, get a reflection"]];
-const LENS=[["Quick check-in","Two questions · a few minutes",2],["A quick round","Three questions · easy to fit in",3],["Stay a little","Five questions · enough time to settle in",5],["Take your time","Ten questions · an unhurried conversation",10]];
-const DEPTHS=["Keep it light","Go real","Go deep"];
-const CATS={0:"Warm-up",1:"Around this table",2:"A little deeper"};
-
-const S={rel:"Family",known:"Most of my life",mode:0,len:5,depth:1,names:[],mic:false,deck:[],i:0,turn:0,answers:[],consent:{}};
+const CHECK_IN_EVERY=3,MIN_ANSWERS=3,MAX_PLAYERS=8;
+const DEPTHS=[["light","Light","Fun, playful, easygoing questions."],["medium","Medium","Interesting questions that create more meaningful conversations."],["deep","Deep","Personal, thought-provoking questions that encourage vulnerability."]];
+const THIN="not enough to go on yet. A few more words next round will help.";
+// answers: question -> name -> typed answer. Only players who agreed can appear here.
+const S={mode:'talk',players:2,names:[],consented:[],depth:null,cards:[],i:0,played:0,answers:{},seen:[],keepDepth:false,joined:false};
+let C={cur:'',skipped:[]},pickedDepth=null;
 const $=id=>document.getElementById(id);
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0)}
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const speakers=()=>S.consented.length?S.consented:['Me'];
+const answerCount=()=>Object.values(S.answers).reduce((n,by)=>n+Object.keys(by).length,0);
+const reflectLabel=()=>speakers().length>1?'Get Our Reflection':'Get My Reflection';
+const q=()=>S.cards[S.i];
 
-// ---------- home ----------
-let tasteI=0;function taste(){tasteI=(tasteI+1)%3;$('tasteQ').textContent=LIGHT[tasteI];$('tasteN').textContent='0'+(tasteI+1)+' / 03'}
-$('tasteQ').textContent=LIGHT[0];
-
-// ---------- setup ----------
-function chips(id,items,get,set){$(id).innerHTML=items.map(it=>{const [l,sub]=Array.isArray(it)?it:[it];return `<button class="chip ${get()===l?'on':''}" title="${sub||''}">${l}</button>`}).join('');[...$(id).children].forEach((b,k)=>b.onclick=()=>{set(Array.isArray(items[k])?items[k][0]:items[k],k);renderSetup()})}
-function opts(id,items,get,set){$(id).innerHTML=items.map((it,k)=>`<button class="opt ${get()===k?'on':''}"><b>${it[0]}</b><span>${it[1]}</span></button>`).join('');[...$(id).children].forEach((b,k)=>b.onclick=()=>{set(k);renderSetup()})}
-function renderSetup(){
-  chips('relChips',REL,()=>S.rel,v=>S.rel=v);
-  chips('knownChips',KNOWN,()=>S.known,v=>S.known=v);
-  opts('modeOpts',MODES,()=>S.mode,k=>S.mode=k);
-  opts('lenOpts',LENS,()=>LENS.findIndex(l=>l[2]===S.len),k=>S.len=LENS[k][2]);
-  chips('depthChips',DEPTHS,()=>DEPTHS[S.depth],(v,k)=>S.depth=k);
-  const talk=S.mode===0,n=names().length,need=talk?0:S.rel==="Solo"?1:2;
-  $('namesWrap').style.display=talk?'none':'';
-  $('roundTitle').textContent=S.len+' questions';
-  $('roundSub').textContent=talk?`About ${Math.round(S.len*2.5)}-${S.len*3+5} min · ${DEPTHS[S.depth]}`:`About ${Math.round(S.len*2.5)}-${S.len*3+5} min for ${Math.max(n,need)} people · ${DEPTHS[S.depth]}`;
-  $('dealBtn').textContent='Deal the first of '+S.len;$('dealBtn').disabled=n<need;
-  $('dealHint').textContent=n<need?`Add at least ${need} first name${need>1?'s':''} to begin.`:'';
+// ---------- welcome + players ----------
+function pick(mode){S.mode=mode;renderPlayers();go('s-players')}
+$('names').innerHTML=Array.from({length:MAX_PLAYERS},(_,k)=>`<label class="muted small">Player ${k+1}<input maxlength="40" autocomplete="off" placeholder="Name or nickname" oninput="renderPlayers()"></label>`).join('');
+function setCount(n){S.players=n;renderPlayers()}
+function cleanNames(){return [...$('names').querySelectorAll('input')].slice(0,S.players).map(x=>x.value.trim())}
+function renderPlayers(){
+  const n=S.players,needs=S.mode==='insights'&&n>1,names=cleanNames();
+  $('plLabel').textContent='Step 1 of 2 · '+(S.mode==='insights'?'Get Insights':'Just Talk');
+  $('countChips').innerHTML=[1,2,3,4,5].map(c=>{const on=c===5?n>=5:n===c;return `<button class="chip ${on?'on':''}" role="radio" aria-checked="${on}" onclick="setCount(${c})">${c===1?'Just me':c===5?'5+':c}</button>`}).join('');
+  $('exactWrap').style.display=n>=5?'':'none';$('exact').value=Math.max(n,5);
+  $('namesWrap').style.display=needs?'':'none';
+  [...$('names').children].forEach((l,k)=>l.style.display=k<n?'':'none');
+  const filled=names.every(Boolean),unique=new Set(names.map(x=>x.toLowerCase())).size===n;
+  $('nameErr').textContent=needs&&filled&&!unique?'Each player needs a different name.':'';
+  $('plBtn').disabled=needs&&!(filled&&unique);
 }
-function addName(){if($('names').children.length>=9)return;const el=document.createElement('input');el.placeholder=$('names').children.length?'Their first name':'Your first name';el.oninput=renderSetup;$('names').appendChild(el)}
-function names(){return [...$('names').querySelectorAll('input')].map(x=>x.value.trim()).filter(Boolean)}
-addName();addName();renderSetup();
+function contPlayers(){
+  S.names=S.mode==='insights'?(S.players>1?cleanNames():['Me']):[];S.consented=[];
+  if(S.mode!=='insights')return toDepth();
+  $('consentList').innerHTML=S.names.map((n,k)=>`<label class="check agree"><input type="checkbox" data-k="${k}" onchange="checkConsent()"> ${S.names.length===1?"I agree, and I'm 18 or older":esc(n)+' agrees, and is 18 or older'}</label>`).join('');
+  checkConsent();go('s-consent')}
 
-// ---------- consent ----------
-function toConsent(){S.names=names();if(S.mode===0){startPlay(false);return}$('consentList').innerHTML=S.names.map((n,k)=>`<div class="box" style="margin:10px 0;border-left:3px solid var(--primary)"><h2>${esc(n)}</h2><label class="check"><input type="checkbox" data-p="${k}" data-f="rec"> I agree to be recorded</label><label class="check"><input type="checkbox" data-p="${k}" data-f="age"> I am 18 or older</label></div>`).join('');
-  $('consentList').querySelectorAll('input').forEach(c=>c.onchange=checkConsent);checkConsent();go('s-consent')}
-function checkConsent(){const all=[...$('consentList').querySelectorAll('input')].every(c=>c.checked);$('micOnBtn').disabled=!all||!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)}
+// ---------- consent: each player agrees for themselves, nobody agrees for the table ----------
+const agreed=()=>[...$('consentList').querySelectorAll('input:checked')].map(c=>S.names[+c.dataset.k]);
+function checkConsent(){$('consentBtn').disabled=!agreed().length}
+function contConsent(){S.consented=agreed();if(!S.consented.length)return;S.keepDepth?start(S.depth):toDepth()}
+function justTalk(){S.mode='talk';S.consented=[];S.keepDepth?start(S.depth):toDepth()}
+
+// ---------- depth: nothing preselected ----------
+function toDepth(){pickedDepth=null;renderDepth();go('s-depth')}
+function renderDepth(){
+  $('depthOpts').innerHTML=DEPTHS.map(d=>`<button class="opt ${pickedDepth===d[0]?'on':''}" role="radio" aria-checked="${pickedDepth===d[0]}" onclick="pickedDepth='${d[0]}';renderDepth()"><b>${d[1]}</b><span>${d[2]}</span></button>`).join('');
+  $('depthBtn').disabled=!pickedDepth;$('depthHint').style.display=pickedDepth?'none':''}
+
+// ---------- deal: light first, then climb to the chosen depth, then the rest so a table never runs dry ----------
+const shuffle=a=>{a=[...a];for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
+function order(depth){const L=shuffle(LIGHT),R=shuffle(REAL),D=shuffle(DEEP);
+  return depth==='light'?[...L,...R,...D]:depth==='medium'?[L[0],...R,...L.slice(1),...D]:[L[0],R[0],...D,...R.slice(1),...L.slice(1)]}
+function start(depth){if(!depth)return;
+  S.depth=depth;S.keepDepth=false;S.played=0;
+  const all=order(depth),left=all.filter(c=>!S.seen.includes(c));
+  if(!left.length)S.seen=[]; // this table has played all 30: start over
+  S.cards=left.length?left:all;S.i=0;showCard()}
 
 // ---------- play ----------
-function buildDeck(){
-  const base=S.depth===0?[...LIGHT]:S.depth===1?[...REAL,...LIGHT.slice(0,3)]:[...DEEP,...REAL.slice(0,2)];
-  const pool=(/Colleagues|Just met|Partners/.test(S.rel)?base.filter(q=>!FAMILY_WORDS.test(q)):base);
-  const extra=[...LIGHT,...REAL,...DEEP].filter(q=>!pool.includes(q));
-  const qs=[...pool,...extra].slice(0,Math.max(1,S.len-1));
-  S.deck=qs.map((q,k)=>({q,cat:CATS[S.depth]||'Warm-up',depthCat:k<3?CATS[0]:CATS[S.depth]})).concat([CLOSER]);
-}
-function startPlay(mic){S.mic=mic;buildDeck();S.i=0;S.answers=[];startCard();go('s-play')}
-function startCard(){S.turn=0;S.passed=new Set();renderCard()}
-function card(){return S.deck[S.i]}
+function showCard(){const sp=speakers(),saved=S.answers[q()]||{};C={cur:sp.find(n=>!(n in saved))||sp[0],skipped:[]};renderCard();go('s-play')}
 function renderCard(){
-  const talk=S.mode===0;
-  document.querySelector('#s-play .tools').querySelectorAll('.chip').forEach((b,k)=>b.style.display=talk&&k>0?'none':'');
-  const c=card(),closer=!!c.cat&&c===CLOSER,everyone=talk||closer||S.turn>=S.names.length;
-  $('cardKicker').textContent=`${closer?'Connect':(S.i<2?CATS[0]:CATS[S.depth])} · Card ${S.i+1} of ${S.deck.length}`;
-  $('dots').innerHTML=S.deck.map((_,k)=>`<i class="${k<S.i?'done':''}"></i>`).join('');
-  $('cardCat').textContent=closer?'Do this together':(S.i<2?'Warm-up':S.depth===2?'Go deep':'Understand each other');
-  $('q').textContent=c.q;
-  const who=S.names[S.turn];
-  $('cardWho').textContent=closer?'Everyone, together':talk?'Anyone can answer':everyone?'Everyone had a turn':`${who} ${S.turn===0?'opens':'answers'}`;
-  $('people').innerHTML=S.names.map((n,k)=>{const a=S.answers.find(x=>x.card===S.i&&x.p===k);const st=closer?'Together':a?'Heard':S.passed.has(k)?'Passed':k===S.turn?'Your turn':k<S.turn?'Heard':'Listening';
-    return `<div class="person ${k===S.turn&&!everyone?'turn':''}"><div class="st">${st}</div><div class="nm">${esc(n)}</div>${a?`<div class="ans">“${esc(a.text)}”</div>`:''}</div>`}).join('');
-  $('people').style.display=talk?'none':'';
-  $('hint').textContent=talk?(closer?'':'Read it out loud. Anyone can answer, passing is allowed.'):everyone?'':S.mic?`${who}: tap Enable voice and answer out loud, or type instead.`:`${who}: read it out loud, answer, then type the words you want remembered. Or just pass.`;
-  $('turnBtns').style.display=everyone?'none':'';$('doneBtns').style.display=everyone?'':'none';
-  $('voiceBtn').style.display=S.mic?'':'none';$('passBtn').textContent=`Pass ${who||''}'s turn`;
-  $('nextBtn').textContent=S.i===S.deck.length-1?'Close the round':'Deal the next card';
+  const talk=S.mode==='talk',sp=speakers(),saved=S.answers[q()]||{},pos=S.i%CHECK_IN_EVERY;
+  $('qNum').textContent='Question '+(S.i+1);
+  $('dots').innerHTML=Array.from({length:CHECK_IN_EVERY},(_,k)=>`<i class="${k<=pos?'done':''}"></i>`).join('');
+  $('cardCat').textContent=LIGHT.includes(q())?'Light':REAL.includes(q())?'Medium':'Deep';
+  $('q').textContent=q();
+  $('talkBtns').style.display=talk?'':'none';$('insightBtns').style.display=talk?'none':'';
+  if(talk)return;
+  $('whoWrap').style.display=sp.length>1?'':'none';
+  $('who').innerHTML=sp.map((n,k)=>`<button class="chip ${n===C.cur?'on':''}" aria-pressed="${n===C.cur}" onclick="pickSpeaker(${k})">${esc(n)}${n in saved?' ✓':C.skipped.includes(n)&&n!==C.cur?' · skipped':''}</button>`).join('');
+  $('ansLbl').textContent=sp.length>1?C.cur+"'s answer":'Your answer';
+  $('ans').value=saved[C.cur]||'';$('saveBtn').disabled=!$('ans').value.trim();
+  $('skipBtn').textContent=sp.length>1?`Skip ${C.cur}'s answer`:'Skip this question';
 }
-function passTurn(){S.passed.add(S.turn);S.turn++;renderCard()}
-function nextCard(){if(S.i>=S.deck.length-1){S.mode===0?toEnd():toReview();return}S.i++;startCard()}
-function openType(){$('ansWho').textContent=S.names[S.turn]+"'s answer";$('voiceBox').style.display='none';$('typeBox').style.display='';$('ans').value='';$('m-answer').classList.add('on');$('ans').focus()}
-function closeAnswer(){stopVoice(true);$('m-answer').classList.remove('on')}
-function keepAnswer(){const t=($('ans').value||$('live').textContent).trim();stopVoice(true);if(!t){$('m-answer').classList.remove('on');return}
-  S.answers=S.answers.filter(a=>!(a.card===S.i&&a.p===S.turn));S.answers.push({card:S.i,p:S.turn,q:card().q,text:t});$('m-answer').classList.remove('on');S.turn++;renderCard()}
-// voice: Web Speech API live transcript, Chrome/Android/iOS Safari 14.5+
-let rec=null;
-function startVoice(){const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){alert('Voice is not available in this browser. Type instead.');return}
-  $('ansWho').textContent=S.names[S.turn]+"'s answer";$('voiceBox').style.display='';$('typeBox').style.display='none';$('live').textContent='';$('ans').value='';$('m-answer').classList.add('on');
-  rec=new R();rec.continuous=true;rec.interimResults=true;rec.lang='en-CA';let fin='';
-  rec.onresult=e=>{let interim='';for(let k=e.resultIndex;k<e.results.length;k++){const r=e.results[k];if(r.isFinal)fin+=r[0].transcript+' ';else interim+=r[0].transcript}$('live').textContent=(fin+interim).trim()};
-  rec.onerror=e=>{$('live').textContent='Mic error: '+e.error+'. Tap Stop and type instead.'};rec.start()}
-function stopVoice(silent){if(rec){try{rec.stop()}catch(e){}rec=null}if(!silent){$('ans').value=$('live').textContent;$('voiceBox').style.display='none';$('typeBox').style.display=''}}
-function readAloud(){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(card().q))}
-function transcriptHTML(){return S.answers.length?S.answers.map((a,k)=>`<div class="ans-row"><div class="qq">${esc(S.names[a.p])} · ${esc(a.q)}</div><div class="aa">${esc(a.text)}</div><button class="link" onclick="editAns(${k})">Edit answer</button><button class="link" onclick="delAns(${k})">Delete answer</button></div>`).join(''):'<p class="muted">Nothing saved yet. Only the words you keep go into the reflection.</p>'}
-function openTranscript(){$('transcriptList').innerHTML=transcriptHTML();$('m-transcript').classList.add('on')}
-function editAns(k){const t=prompt('Edit the words you want remembered:',S.answers[k].text);if(t!==null){S.answers[k].text=t.trim()}refreshLists()}
-function delAns(k){S.answers.splice(k,1);refreshLists()}
-function refreshLists(){$('transcriptList').innerHTML=transcriptHTML();$('reviewList').innerHTML=transcriptHTML();$('savedCount').textContent=`${S.answers.length} saved answers. Only these words go into your reflection.`;if($('s-play').classList.contains('on'))renderCard()}
+let noteT;function note(m){const set=t=>document.querySelectorAll('.saved').forEach(e=>e.textContent=t);set(m);clearTimeout(noteT);noteT=setTimeout(()=>set(''),2200)}
+function save(name,text){(S.answers[q()]=S.answers[q()]||{})[name]=text;note(speakers().length>1?name+"'s answer saved ✓":'Answer saved ✓')}
+function pickSpeaker(k){C.cur=speakers()[k];renderCard()}
+// one action per turn: the next player who hasn't answered or skipped, else the next question
+function moveOn(){const sp=speakers(),saved=S.answers[q()]||{},from=sp.indexOf(C.cur);
+  for(let k=1;k<=sp.length;k++){const n=sp[(from+k)%sp.length];if(n!==C.cur&&!(n in saved)&&!C.skipped.includes(n)){C.cur=n;return renderCard()}}
+  next()}
+function saveAndNext(){const t=$('ans').value.trim();if(!t)return;save(C.cur,t);moveOn()}
+function skip(){C.skipped.push(C.cur);moveOn()}
+function next(){goTo(S.i+1,true)}
+function goTo(index,checkIn){
+  if(index>=S.cards.length)return finish(); // all 30 played
+  S.i=index;if(checkIn&&index%CHECK_IN_EVERY===0){renderCheckin();go('s-checkin')}else showCard()}
+// shortcut: End round keeps a typed, unsaved answer without asking. v2 asks "Save and Finish / Finish Without Saving"; add that if this demo becomes the pilot build.
+function endRound(){const t=$('ans').value.trim();if(S.mode==='insights'&&t)save(C.cur,t);finish(true)}
 
-// ---------- review + reflection ----------
-function toReview(){$('m-transcript').classList.remove('on');refreshLists();go('s-review')}
-const roundName=()=>$('roundName').value.trim()||'Breakfast at Coco Frutti';
-function createReflection(){if(!$('agree').checked){alert('Everyone needs to agree first.');return}go('s-wait');const steps=[...S.names.map(n=>`Reading what ${n} shared`),'Finding what stayed'];let k=0;$('waitStatus').textContent=steps[0];
-  const t=setInterval(()=>{k++;if(k<steps.length)$('waitStatus').textContent=steps[k];else{clearInterval(t);renderReflection();go('s-reflection')}},1400)}
-function renderReflection(){
-  const byP=S.names.map((n,k)=>S.answers.filter(a=>a.p===k));
-  $('reflTitle').textContent=roundName();$('reflMeta').textContent=`${S.names.length} ${S.names.length===1?'person':'people'}, ${S.deck.length} cards`;
-  const longest=arr=>arr.slice().sort((a,b)=>b.text.length-a.text.length)[0];
-  $('surfaced').innerHTML=(S.answers.length?byP.map((arr,k)=>arr.length?`<p class="quote">${esc(S.names[k])} said, “${esc(longest(arr).text)}”</p>`:'').join(''):'<p class="muted">No words were kept this round. The conversation still happened.</p>')+($('thought').value.trim()?`<p class="muted">A thought you kept: “${esc($('thought').value.trim())}”</p>`:'');
-  $('nextQ').textContent=DEEP[(S.answers.length+S.names.length)%DEEP.length];
-  $('personal').innerHTML=S.names.map((n,k)=>`<div class="box" style="margin:10px 0"><p class="kicker">Private reflection</p><h2>For ${esc(n)}</h2><p class="muted">Hand ${esc(n)} the phone before opening this.</p><button class="btn ghost" onclick="this.nextElementSibling.style.display='';this.remove()">Show ${esc(n)}'s reflection</button><div style="display:none">${personal(n,byP[k])}</div></div>`).join('');
+// ---------- check-in + round end ----------
+function renderCheckin(){
+  const keep='<button class="btn" onclick="showCard()">Keep Playing</button>';
+  $('ciLabel').textContent=S.i+' questions played';
+  $('ciBtns').innerHTML=S.mode==='talk'
+    ?keep+'<button class="btn ghost" onclick="tryInsights()">Try a Round with Insights</button><p class="center muted small" style="margin-top:8px">A new round where you type answers and Briidge writes a reflection on what you share.</p>'
+    :answerCount()?`<button class="btn" onclick="finish()">${reflectLabel()}</button><button class="btn ghost" onclick="showCard()">Keep Playing</button>`
+    :keep+'<button class="btn ghost" onclick="finish()">Finish Playing</button><p class="center muted small" style="margin-top:8px">Save a few answers to get a reflection.</p>';
+  if(S.mode==='talk'&&!S.joined)wlTo('wlHostCheckin');
 }
-// shortcut: template reflection built in the browser; the real one comes from bridge-server. Upgrade when the demo moves to briidge.app.
-function personal(n,arr){if(!arr.length)return `<p class="muted">${esc(n)} listened this round. Listening counts.</p>`;
-  const L=arr.slice().sort((a,b)=>b.text.length-a.text.length)[0];const title=L.text.split(/[,.;]/)[0].split(' ').slice(0,6).join(' ');
-  const who=L.text.match(/\b(mother|father|mom|dad|brother|sister|kids?|wife|husband|friend|grandma|grandpa|family)\b/i);
-  return `<h2 style="margin-top:8px">${esc(title)}</h2><p class="label">What came through</p><p>Asked “${esc(L.q)}”, ${esc(n)} reached for something specific: ${esc(L.text.length>80?L.text.slice(0,80).trim()+'…':L.text)} ${who?`The person who shows up in that answer is ${who[0].toLowerCase()}. That is usually not an accident.`:'The detail chosen says as much as the answer.'}</p>
-  <p class="label">How to know me</p><p>${esc(n)} kept ${arr.length} answer${arr.length>1?'s':''} this round${arr.length>1?', and the shortest was still '+Math.min(...arr.map(a=>a.text.split(' ').length))+' words':''}. Ask a follow-up, not a new question.</p>
-  <p class="label">In your words</p>${arr.map(a=>`<p class="quote">“${esc(a.text)}”</p>`).join('')}
-  <p class="label">A question to keep</p><p class="quote">What makes that important to you?</p>`}
-function toEnd(){$('tryRefl').style.display=S.mode===0?'':'none';go('s-end')}
-function tryReflection(){S.mode=1;renderSetup();go('s-setup')}
+// early = the End round link on a card, which asks once before writing a reflection
+function finish(early){
+  S.played=$('s-checkin').classList.contains('on')?S.i:S.i+1; // at a check-in the next card is queued but not seen
+  if(S.mode!=='insights'||!answerCount())return toEnd();
+  if(early){$('epBtn').textContent=reflectLabel();return go('s-endprompt')}
+  reflectOrStart()}
+function reflectOrStart(){answerCount()<MIN_ANSWERS?go('s-starting'):reflect()}
+
+// ---------- reflection ----------
+function reflect(){go('s-wait');const st=['Reading what you shared…','Finding patterns…','Writing your reflection…'];let k=0;$('waitStatus').textContent=st[0];
+  const t=setInterval(()=>{if(!$('s-wait').classList.contains('on'))return clearInterval(t);if(++k<st.length)$('waitStatus').textContent=st[k];else{clearInterval(t);showReflection()}},1200)}
+function showReflection(){renderReflection();wlTo('wlHostRefl');$('reflJoin').style.display=S.joined?'none':'';go('s-reflection')}
+const groupLabel=n=>n.length<=1?(n[0]||'Just me'):n.slice(0,-1).join(', ')+' & '+n[n.length-1];
+// shortcut: template reflection built in the browser from the saved words; the real one comes from Briidge's server. Upgrade when the demo moves to briidge.app.
+function renderReflection(){
+  const sp=S.consented,lines=n=>Object.values(S.answers).map(by=>by[n]).filter(Boolean),longest=a=>a.slice().sort((x,y)=>y.length-x.length)[0];
+  const cards=Object.values(S.answers).filter(by=>Object.keys(by).length).length;
+  const sec=(t,html)=>`<div class="box"><p class="label" style="margin-top:0">${t}</p>${html}</div>`;
+  $('reflMeta').textContent=`${groupLabel(sp)} · ${cards} ${cards===1?'question':'questions'}`;
+  const said=sp.length>1
+    ?sec('What each of you said',sp.map(n=>{const l=lines(n);return l.length?`<p style="margin-bottom:0;font-weight:500">${esc(n)}</p><p class="quote">“${esc(longest(l))}”</p>`:`<p><span style="font-weight:500">${esc(n)}</span>: ${THIN}</p>`}).join(''))
+    :sec('In your words',lines(sp[0]).slice(0,2).map(t=>`<p class="quote">“${esc(t)}”</p>`).join(''));
+  const playedQs=S.cards.slice(0,S.played);
+  $('reflBody').innerHTML=said+sec('A question to keep talking about',`<p class="quote">${esc(DEEP.find(c=>!playedQs.includes(c))||DEEP[0])}</p>`);
+}
+// same round, same answers: the next reflection reads old and new together
+function keepExploring(){goTo(S.played,false)}
+
+// ---------- end + waitlist ----------
+function wlTo(host){$(host).appendChild($('wl'))} // one signup box, shown wherever the flow is
+function jumpToWl(){$('wl').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});$('wlEmail').focus({preventScroll:true})}
+function toEnd(){wlTo('wlHostEnd');$('tryBox').style.display=S.mode==='talk'?'':'none';go('s-end')}
+const seenSoFar=()=>[...S.seen,...S.cards.slice(0,Math.max(S.played,S.i+1))];
+function playAgain(){S.seen=seenSoFar();S.answers={};toDepth()}
+// a fresh Get Insights round: nothing said aloud in Just Talk was captured. Same player count and depth.
+function tryInsights(){S.seen=seenSoFar();S.mode='insights';S.answers={};S.names=[];S.consented=[];S.keepDepth=true;renderPlayers();go('s-players')}
 function joinWaitlist(){const e=$('wlEmail').value.trim();
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){$('wlHint').textContent='Add your email to join.';return}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){$('wlHint').textContent='Enter your email address to join the waitlist.';return}
   if(!$('wlOk').checked){$('wlHint').textContent='Tick the box to join the waitlist.';return}
-  $('wlHint').textContent='';$('wlBtn').textContent="Thanks, you're on the list (demo)";$('wlBtn').disabled=true}
-function restart(){S.answers=[];S.i=0;go('s-home')}
-// shortcut: ?table=12 only labels the header; the pilot ties the code to a table + day so a code is used once.
+  S.joined=true;$('wlHint').textContent='';$('wlBtn').textContent="Thanks, you're on the list (demo)";$('wlBtn').disabled=true}
+function restart(){Object.assign(S,{mode:'talk',players:2,names:[],consented:[],depth:null,cards:[],i:0,played:0,answers:{},seen:[],keepDepth:false});go('s-home')}
+// shortcut: ?table=12 only labels the header; the pilot ties the QR to a table.
 const t=new URLSearchParams(location.search).get('table');if(t)$('tableLbl').textContent='Table '+t;
 
-// ---------- self-test: ?selftest=1 runs the whole flow headless and logs PASS/FAIL ----------
+// ---------- self-test: ?selftest=1 runs the whole flow headless and sets the title to PASS/FAIL ----------
 if(new URLSearchParams(location.search).get('selftest')){try{
-  const ok=(c,m)=>{if(!c)throw new Error(m)};
-  ok(LIGHT.length+REAL.length+DEEP.length===30,'deck 30');
-  ok(!/drink|\$5|35 questions|placeholder/i.test(document.querySelector('main').textContent),'no drink or old copy');
-  // just talk (default): no names, no typing, ends on the waitlist screen
-  ok(S.mode===0&&!$('dealBtn').disabled,'talk mode deals without names');
-  toConsent();ok($('s-play').classList.contains('on')&&S.deck.length===5,'talk deck 5');
-  ok($('people').style.display==='none'&&$('turnBtns').style.display==='none','nothing to type');
-  for(let c=0;c<5;c++)nextCard();ok($('s-end').classList.contains('on')&&$('tryRefl').style.display==='','talk ends on end screen');
-  joinWaitlist();ok(!$('wlBtn').disabled,'no email, no join');$('wlEmail').value='a@b.co';joinWaitlist();ok(!$('wlBtn').disabled,'unticked, no join');
-  $('wlOk').checked=true;joinWaitlist();ok($('wlBtn').disabled,'joins');
-  // reflection round
-  tryReflection();ok(S.mode===1&&$('dealBtn').disabled,'reflection needs names');
-  const ins=$('names').querySelectorAll('input');ins[0].value='Noor';ins[1].value='Habib';renderSetup();ok(!$('dealBtn').disabled,'deal enabled');
-  toConsent();startPlay(false);ok(S.deck.length===5&&S.deck[4]===CLOSER,'deck 5 with closer');
-  for(let c=0;c<4;c++){for(let p=0;p<2;p++){openType();$('ans').value=`answer ${c}${p} about my mother`;keepAnswer()}nextCard()}
-  ok(S.answers.length===8,'8 answers');ok(card()===CLOSER,'closer last');nextCard();ok($('s-review').classList.contains('on'),'review screen');
-  $('agree').checked=true;renderReflection();ok($('personal').children.length===2,'2 personal reflections');toEnd();ok($('tryRefl').style.display==='none','end after reflection');
+  const ok=(c,m)=>{if(!c)throw new Error(m)},on=id=>$(id).classList.contains('on'),shown=id=>$(id).style.display!=='none';
+  ok(new Set([...LIGHT,...REAL,...DEEP]).size===30,'deck is 30 different cards');
+  ok(!/drink|\$5|record|microphone|Enable voice|How do you know each other/i.test(document.querySelector('main').textContent),'no v1 or drink copy');
+  // just talk: mode, then players, then depth, each on its own screen; no names, nothing typed
+  pick('talk');ok(on('s-players')&&!shown('namesWrap')&&!$('plBtn').disabled,'talk skips names');
+  contPlayers();ok(on('s-depth')&&$('depthBtn').disabled,'depth has no default');
+  pickedDepth='medium';renderDepth();ok(!$('depthBtn').disabled,'depth picked');
+  start(pickedDepth);ok(on('s-play')&&S.cards.length===30&&shown('talkBtns')&&!shown('insightBtns'),'talk card, nothing to type');
+  ok(LIGHT.includes(S.cards[0])&&REAL.includes(S.cards[1]),'medium opens light then climbs');
+  next();next();ok(on('s-play')&&S.i===2,'no check-in before 3');
+  next();ok(on('s-checkin')&&$('ciLabel').textContent==='3 questions played','check-in after 3');
+  ok($('wlHostCheckin').contains($('wl'))&&/Try a Round with Insights/.test($('ciBtns').textContent),'talk check-in offers insights and the waitlist');
+  showCard();ok(on('s-play')&&$('qNum').textContent==='Question 4','keep playing goes to question 4');
+  next();next();next();ok(on('s-checkin')&&S.i===6,'check-in again after 6');
+  showCard();endRound();ok(on('s-end')&&shown('tryBox')&&$('wlHostEnd').contains($('wl')),'talk ends on the waitlist screen');
+  joinWaitlist();ok(!S.joined,'no email, no join');$('wlEmail').value='a@b.co';joinWaitlist();ok(!S.joined,'unticked, no join');
+  // a round with insights: same count and depth, names and per-player consent, then straight to play
+  tryInsights();ok(on('s-players')&&shown('namesWrap')&&$('plBtn').disabled,'insights needs names');
+  const ins=$('names').querySelectorAll('input');ins[0].value='Noor';ins[1].value='noor';renderPlayers();ok($('plBtn').disabled&&$('nameErr').textContent,'names must differ');
+  ins[1].value='Habib';renderPlayers();ok(!$('plBtn').disabled,'names ok');
+  contPlayers();ok(on('s-consent')&&$('consentBtn').disabled,'nobody has agreed yet');
+  $('consentList').querySelectorAll('input').forEach(c=>c.checked=true);checkConsent();contConsent();
+  ok(on('s-play')&&S.depth==='medium'&&S.cards.length===23,'keeps the depth, skips the 7 cards already seen');
+  for(let c=0;c<3;c++){ok(C.cur==='Noor','Noor opens');$('ans').value='Noor answer '+c+' about my mother';saveAndNext();ok(on('s-play')&&C.cur==='Habib','then Habib');
+    if(c===1)skip();else{$('ans').value='Habib '+c;saveAndNext()}}
+  ok(on('s-checkin')&&answerCount()===5&&/Get Our Reflection/.test($('ciBtns').textContent),'check-in offers the reflection');
+  finish();ok(on('s-wait'),'writing the reflection');showReflection();
+  ok(on('s-reflection')&&$('reflMeta').textContent==='Noor & Habib · 3 questions'&&$('reflBody').querySelectorAll('.quote').length===3,'reflection for two');
+  keepExploring();ok(on('s-play')&&S.i===3&&answerCount()===5,'keep exploring keeps the answers');
+  // early end asks once; under 3 answers gets the starting point
+  playAgain();pickedDepth='deep';renderDepth();start(pickedDepth);ok(S.cards.length===19,'play again skips seen cards');
+  $('ans').value='one <b>answer</b>';endRound();ok(on('s-endprompt')&&answerCount()===1,'end round keeps the typed answer and asks once');
+  reflectOrStart();ok(on('s-starting'),'too few answers');toEnd();ok(on('s-end')&&!shown('tryBox'),'insights end screen');
+  $('wlOk').checked=true;joinWaitlist();ok(S.joined&&$('wlBtn').disabled,'joins');
+  // solo insights, then a table that plays the whole deck
+  restart();pick('insights');setCount(1);contPlayers();ok($('consentList').textContent.includes("I agree"),'solo consent');
+  $('consentList').querySelector('input').checked=true;contConsent();pickedDepth='light';renderDepth();start(pickedDepth);ok(!shown('whoWrap')&&$('ansLbl').textContent==='Your answer','solo card');
+  restart();pick('talk');setCount(6);contPlayers();start('light');for(let c=0;c<30;c++){if(on('s-checkin'))showCard();next()}
+  ok(on('s-end')&&S.played===30,'all 30 played ends the round');
+  restart();ok(on('s-home')&&S.joined,'start over');
   document.title='SELFTEST PASS'}catch(e){document.title='SELFTEST FAIL '+e.message;console.error(e)}}
 </script>
 </body>
